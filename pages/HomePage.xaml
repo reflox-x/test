@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="pawledger.pages.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home"
+    BackgroundColor="#F4F4F8">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label
+                    Text="PawLedger"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="#355070" />
+
+                <Button
+                    Grid.Column="1"
+                    Text="+"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="14"
+                    BackgroundColor="#F3DC8C"
+                    TextColor="#355070"
+                    FontSize="24"
+                    Clicked="OnAddRecordClicked" />
+            </Grid>
+
+            <Frame CornerRadius="20" BackgroundColor="White" Padding="16" HasShadow="False">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="April 2026" FontSize="20" FontAttributes="Bold" TextColor="#355070" />
+                    <Label Text="Income: ¥5,000" FontSize="18" TextColor="#4A90A4" />
+                    <Label Text="Expense: ¥2,000" FontSize="18" TextColor="#C96A59" />
+                    <Label Text="Balance: ¥3,000" FontSize="18" TextColor="#E0A83C" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="20" BackgroundColor="White" Padding="16" HasShadow="False">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Summary" FontSize="20" FontAttributes="Bold" TextColor="#355070" />
+                    <Label Text="Total: ¥5,000" FontSize="16" />
+                    <Label Text="Food: ¥55" FontSize="16" />
+                    <Label Text="Pet: ¥30" FontSize="16" />
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

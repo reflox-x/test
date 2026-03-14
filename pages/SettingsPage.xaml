@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="pawledger.pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Settings"
+    BackgroundColor="#F4F4F8">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label
+                Text="Settings"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#355070"/>
+
+            <!-- Language -->
+            <Border StrokeShape="RoundRectangle 18"
+                    BackgroundColor="White"
+                    Padding="16">
+                <VerticalStackLayout>
+                    <Label Text="Language"
+                           FontSize="18"
+                           TextColor="#355070"/>
+
+                    <Picker x:Name="LanguagePicker">
+                        <Picker.Items>
+                            <x:String>English</x:String>
+                            <x:String>Chinese</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Currency -->
+            <Border StrokeShape="RoundRectangle 18"
+                    BackgroundColor="White"
+                    Padding="16">
+                <VerticalStackLayout>
+                    <Label Text="Currency"
+                           FontSize="18"
+                           TextColor="#355070"/>
+
+                    <Picker x:Name="CurrencyPicker">
+                        <Picker.Items>
+                            <x:String>¥ Yen</x:String>
+                            <x:String>$ USD</x:String>
+                            <x:String>€ Euro</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Dark Mode -->
+            <Border StrokeShape="RoundRectangle 18"
+                    BackgroundColor="White"
+                    Padding="16">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Dark Mode"
+                           FontSize="18"
+                           TextColor="#355070"
+                           VerticalOptions="Center"/>
+
+                    <Switch x:Name="DarkModeSwitch"
+                            Grid.Column="1"/>
+                </Grid>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

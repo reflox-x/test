@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="pawledger" mvid="dfeb579d9d004abf9f65b305617ea10c">
+  <java-to-managed>
+    <entry java-name="crc64265e7685f15ec63c/MainActivity" managed-name="pawledger.MainActivity, pawledger" managed-type-token-id="33554441" />
+    <entry java-name="crc64265e7685f15ec63c/MainApplication" managed-name="pawledger.MainApplication, pawledger" managed-type-token-id="33554442" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc64265e7685f15ec63c/MainActivity" managed-name="pawledger.MainActivity, pawledger" managed-type-token-id="33554441" />
+    <entry java-name="crc64265e7685f15ec63c/MainApplication" managed-name="pawledger.MainApplication, pawledger" managed-type-token-id="33554442" />
+  </managed-to-java>
+</api>
