@@ -7,44 +7,234 @@
     BackgroundColor="#F4F4F8">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="20,18,20,30" Spacing="18">
 
-            <Grid ColumnDefinitions="*,Auto">
-                <Label
-                    Text="PawLedger"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    TextColor="#355070" />
+            <!-- Header -->
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                    <Label Text="🐾" FontSize="26" />
+                    <Label
+                        Text="PawLedger"
+                        FontSize="28"
+                        FontAttributes="Bold"
+                        TextColor="#355070"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
                 <Button
                     Grid.Column="1"
                     Text="+"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    CornerRadius="14"
+                    FontSize="24"
+                    WidthRequest="52"
+                    HeightRequest="52"
+                    CornerRadius="16"
                     BackgroundColor="#F3DC8C"
                     TextColor="#355070"
-                    FontSize="24"
                     Clicked="OnAddRecordClicked" />
             </Grid>
 
-            <Frame CornerRadius="20" BackgroundColor="White" Padding="16" HasShadow="False">
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="April 2026" FontSize="20" FontAttributes="Bold" TextColor="#355070" />
-                    <Label Text="Income: ¥5,000" FontSize="18" TextColor="#4A90A4" />
-                    <Label Text="Expense: ¥2,000" FontSize="18" TextColor="#C96A59" />
-                    <Label Text="Balance: ¥3,000" FontSize="18" TextColor="#E0A83C" />
-                </VerticalStackLayout>
-            </Frame>
+            <!-- Month Card -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="White"
+                Padding="18,16">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label
+                        Text="April 2026"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#355070" />
+                    <Label
+                        Grid.Column="1"
+                        Text="›"
+                        FontSize="24"
+                        TextColor="#90A4B8" />
+                </Grid>
+            </Border>
 
-            <Frame CornerRadius="20" BackgroundColor="White" Padding="16" HasShadow="False">
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="Summary" FontSize="20" FontAttributes="Bold" TextColor="#355070" />
-                    <Label Text="Total: ¥5,000" FontSize="16" />
-                    <Label Text="Food: ¥55" FontSize="16" />
-                    <Label Text="Pet: ¥30" FontSize="16" />
+            <!-- Income -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="#DDF3EE"
+                Padding="18,14">
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Income"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#4A90A4" />
+                        <Label
+                            x:Name="IncomeLabel"
+                            Text="¥5,000"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="#355070" />
+                    </VerticalStackLayout>
+
+                    <Label
+                        Grid.Column="1"
+                        Text="🪙"
+                        FontSize="40"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <!-- Expense -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="#FBE2DF"
+                Padding="18,14">
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Expense"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#D97C7C" />
+                        <Label
+                            x:Name="ExpenseLabel"
+                            Text="¥2,258"
+                            FontSize="26"
+                            FontAttributes="Bold"
+                            TextColor="#B85C5C" />
+                    </VerticalStackLayout>
+
+                    <Label
+                        Grid.Column="1"
+                        Text="👛"
+                        FontSize="40"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <!-- Balance -->
+            <Border
+                StrokeShape="RoundRectangle 24"
+                BackgroundColor="White"
+                Padding="18">
+                <VerticalStackLayout Spacing="14">
+
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Balance  " FontSize="18" FontAttributes="Bold" TextColor="#E0A83C" />
+                                <Span x:Name="BalanceLabel" Text="¥2,742" FontSize="18" FontAttributes="Bold" TextColor="#E0A83C" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <!-- Simple chart placeholder -->
+                    <Grid HeightRequest="120" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*,*,*">
+                        <BoxView Grid.Row="1" Grid.ColumnSpan="6" HeightRequest="1" BackgroundColor="#EAEAEA" VerticalOptions="Center" />
+                        <BoxView Grid.Row="2" Grid.ColumnSpan="6" HeightRequest="1" BackgroundColor="#EAEAEA" VerticalOptions="Center" />
+                        <BoxView Grid.Row="3" Grid.ColumnSpan="6" HeightRequest="1" BackgroundColor="#EAEAEA" VerticalOptions="Center" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="3" Grid.Column="2" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="2" Grid.Column="3" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="2" Grid.Column="4" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="1" Grid.Column="5" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" />
+                        <Label Grid.Row="3" Grid.Column="2" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" />
+                        <Label Grid.Row="2" Grid.Column="3" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="2" Grid.Column="4" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                        <Label Grid.Row="0" Grid.Column="5" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
+                    </Grid>
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
+
+            <!-- Summary -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="White"
+                Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Summary"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="#355070" />
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                        <Border
+                            WidthRequest="38"
+                            HeightRequest="38"
+                            BackgroundColor="#DDF3EE"
+                            StrokeShape="RoundRectangle 10">
+                            <Label Text="💳" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            Text="Total"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#234"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            x:Name="TotalLabel"
+                            Text="¥5,000"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#2A7B74"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                        <Border
+                            WidthRequest="38"
+                            HeightRequest="38"
+                            BackgroundColor="#FCE8B6"
+                            StrokeShape="RoundRectangle 10">
+                            <Label Text="🍴" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            Text="Food"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#234"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            x:Name="FoodLabel"
+                            Text="¥55"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#C96A59"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                        <Border
+                            WidthRequest="38"
+                            HeightRequest="38"
+                            BackgroundColor="#DDE8F8"
+                            StrokeShape="RoundRectangle 10">
+                            <Label Text="🐶" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Grid.Column="1"
+                            Text="Pet"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#234"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            x:Name="PetLabel"
+                            Text="¥30"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#6B6FAF"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
 
         </VerticalStackLayout>
     </ScrollView>

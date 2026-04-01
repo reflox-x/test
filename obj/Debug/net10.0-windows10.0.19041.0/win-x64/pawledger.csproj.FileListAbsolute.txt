@@ -502,3 +502,4 @@ E:\vs test\pawledger\pawledger\obj\Debug\net10.0-windows10.0.19041.0\win-x64\pri
 E:\vs test\pawledger\pawledger\obj\Debug\net10.0-windows10.0.19041.0\win-x64\qualifiers.txt
 E:\vs test\pawledger\pawledger\obj\Debug\net10.0-windows10.0.19041.0\win-x64\qualifiers.txt.intermediate
 E:\vs test\pawledger\pawledger\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MultipleQualifiersPerDimensionFound.txt
+E:\vs test\pawledger\pawledger\obj\Debug\net10.0-windows10.0.19041.0\win-x64\pawledger.sourcelink.json

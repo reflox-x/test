@@ -1,3 +1,5 @@
+using pawledger.Services;
+
 namespace pawledger.pages;
 
 public partial class AddRecordPage : ContentPage
@@ -49,7 +51,21 @@ public partial class AddRecordPage : ContentPage
 
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Saved", "Record saved successfully.", "OK");
+        if (!decimal.TryParse(AmountEntry.Text, out decimal amount))
+        {
+            await DisplayAlertAsync("Error", "Please enter a valid amount.", "OK");
+            return;
+        }
+
+        string category = string.IsNullOrWhiteSpace(CategoryEntry.Text)
+            ? "Other"
+            : CategoryEntry.Text.Trim();
+
+        string type = _isExpense ? "Expense" : "Income";
+
+        LedgerService.AddRecord(amount, type, category);
+
+        await DisplayAlertAsync("Saved", "Record saved successfully.", "OK");
         await Shell.Current.GoToAsync("..");
     }
 }
