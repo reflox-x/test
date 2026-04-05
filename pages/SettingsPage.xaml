@@ -16,15 +16,20 @@
                 TextColor="#355070"/>
 
             <!-- Language -->
-            <Border StrokeShape="RoundRectangle 18"
-                    BackgroundColor="White"
-                    Padding="16">
-                <VerticalStackLayout>
-                    <Label Text="Language"
-                           FontSize="18"
-                           TextColor="#355070"/>
+            <Border
+                StrokeShape="RoundRectangle 18"
+                BackgroundColor="White"
+                Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Language"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#355070"/>
 
-                    <Picker x:Name="LanguagePicker">
+                    <Picker
+                        x:Name="LanguagePicker"
+                        SelectedIndexChanged="OnLanguageChanged">
                         <Picker.Items>
                             <x:String>English</x:String>
                             <x:String>Chinese</x:String>
@@ -34,15 +39,20 @@
             </Border>
 
             <!-- Currency -->
-            <Border StrokeShape="RoundRectangle 18"
-                    BackgroundColor="White"
-                    Padding="16">
-                <VerticalStackLayout>
-                    <Label Text="Currency"
-                           FontSize="18"
-                           TextColor="#355070"/>
+            <Border
+                StrokeShape="RoundRectangle 18"
+                BackgroundColor="White"
+                Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Currency"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#355070"/>
 
-                    <Picker x:Name="CurrencyPicker">
+                    <Picker
+                        x:Name="CurrencyPicker"
+                        SelectedIndexChanged="OnCurrencyChanged">
                         <Picker.Items>
                             <x:String>¥ Yen</x:String>
                             <x:String>$ USD</x:String>
@@ -53,17 +63,22 @@
             </Border>
 
             <!-- Dark Mode -->
-            <Border StrokeShape="RoundRectangle 18"
-                    BackgroundColor="White"
-                    Padding="16">
+            <Border
+                StrokeShape="RoundRectangle 18"
+                BackgroundColor="White"
+                Padding="16">
                 <Grid ColumnDefinitions="*,Auto">
-                    <Label Text="Dark Mode"
-                           FontSize="18"
-                           TextColor="#355070"
-                           VerticalOptions="Center"/>
+                    <Label
+                        Text="Dark Mode"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#355070"
+                        VerticalOptions="Center"/>
 
-                    <Switch x:Name="DarkModeSwitch"
-                            Grid.Column="1"/>
+                    <Switch
+                        x:Name="DarkModeSwitch"
+                        Grid.Column="1"
+                        Toggled="OnDarkModeToggled"/>
                 </Grid>
             </Border>
 

@@ -18,11 +18,13 @@ public partial class HomePage : ContentPage
 
     private void RefreshData()
     {
-        IncomeLabel.Text = $"¥{LedgerService.IncomeTotal}";
-        ExpenseLabel.Text = $"¥{LedgerService.ExpenseTotal}";
-        BalanceLabel.Text = $"¥{LedgerService.Balance}";
+        string currency = Preferences.Default.Get("currency", "¥");
 
-        TotalLabel.Text = $"¥{LedgerService.IncomeTotal}";
+        IncomeLabel.Text = $"{currency}{LedgerService.IncomeTotal}";
+        ExpenseLabel.Text = $"{currency}{LedgerService.ExpenseTotal}";
+        BalanceLabel.Text = $"{currency}{LedgerService.Balance}";
+
+        TotalLabel.Text = $"{currency}{LedgerService.IncomeTotal}";
 
         var food = LedgerService.Records
             .Where(r => r.Category == "Food")
@@ -32,8 +34,8 @@ public partial class HomePage : ContentPage
             .Where(r => r.Category == "Pet")
             .Sum(r => r.Amount);
 
-        FoodLabel.Text = $"¥{food}";
-        PetLabel.Text = $"¥{pet}";
+        FoodLabel.Text = $"{currency}{food}";
+        PetLabel.Text = $"{currency}{pet}";
     }
 
     private async void OnAddRecordClicked(object sender, EventArgs e)

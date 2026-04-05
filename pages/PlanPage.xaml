@@ -15,21 +15,102 @@
                 FontAttributes="Bold"
                 TextColor="#355070" />
 
-            <Frame CornerRadius="20" BackgroundColor="White" Padding="16" HasShadow="False">
+            <!-- Overview -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="White"
+                Padding="16">
                 <VerticalStackLayout Spacing="12">
-                    <Label Text="Saved 5,000" FontSize="22" FontAttributes="Bold" TextColor="#243B53" />
-                    <Label Text="25%" FontSize="18" TextColor="#243B53" />
-                    <ProgressBar Progress="0.25" ProgressColor="#4FA9CC" BackgroundColor="#D7EAF2" />
-                </VerticalStackLayout>
-            </Frame>
+                    <Label
+                        x:Name="SavedLabel"
+                        Text="Saved 0 / 0"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="#243B53" />
 
-            <Frame CornerRadius="20" BackgroundColor="White" Padding="16" HasShadow="False">
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="¥10,000 - 2026/06/01" FontSize="16" />
-                    <Label Text="¥15,000 - 2026/07/01" FontSize="16" />
-                    <Label Text="¥20,000 - 2026/08/01" FontSize="16" />
+                    <Label
+                        x:Name="ProgressLabel"
+                        Text="0%"
+                        FontSize="18"
+                        TextColor="#243B53" />
+
+                    <ProgressBar
+                        x:Name="PlanProgressBar"
+                        Progress="0"
+                        ProgressColor="#4FA9CC"
+                        BackgroundColor="#D7EAF2" />
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
+
+            <!-- Plan List -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="White"
+                Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="My Plans"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="#355070" />
+
+                    <CollectionView x:Name="PlanCollectionView" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                StrokeShape="RoundRectangle 16"
+                BackgroundColor="#F9FAFB"
+                Padding="12"
+                Margin="0,0,0,10">
+                                    <VerticalStackLayout Spacing="8">
+
+                                        <Label
+                        Text="{Binding Title}"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#243B53" />
+
+                                        <Label
+                        Text="{Binding Deadline, StringFormat='Deadline: {0}'}"
+                        FontSize="14"
+                        TextColor="#90A4B8" />
+
+                                        <Label
+                        Text="{Binding TargetAmount, StringFormat='Target: ¥{0}'}"
+                        FontSize="16"
+                        TextColor="#355070" />
+
+                                        <Label
+                        Text="{Binding SavedAmount, StringFormat='Saved: ¥{0}'}"
+                        FontSize="16"
+                        TextColor="#4A90A4" />
+
+                                        <ProgressBar
+                        Progress="{Binding Progress}"
+                        ProgressColor="#4FA9CC"
+                        BackgroundColor="#D7EAF2" />
+
+                                        <Button
+                        Text="Add Savings"
+                        BackgroundColor="#DDEBFA"
+                        TextColor="#355070"
+                        CornerRadius="14"
+                        Clicked="OnAddSavingsClicked" />
+
+                                        <Button
+                        Text="Delete Plan"
+                        BackgroundColor="#FBE2DF"
+                        TextColor="#B85C5C"
+                        CornerRadius="14"
+                        Clicked="OnDeletePlanClicked" />
+
+                                    </VerticalStackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
 
             <Button
                 Text="+ Add to plan"
@@ -39,7 +120,6 @@
                 TextColor="#355070"
                 FontAttributes="Bold"
                 Clicked="OnAddPlanClicked" />
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

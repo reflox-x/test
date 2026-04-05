@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pawledger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+5adc8fba3b0c0f1f0ce22b99dbbdae68c0900e28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+1a7461a0ffa587301d105789600095cf1308e4d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("pawledger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pawledger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
