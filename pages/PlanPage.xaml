@@ -42,7 +42,7 @@
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Plan List -->
+            <!-- Plan Listt -->
             <Border
                 StrokeShape="RoundRectangle 22"
                 BackgroundColor="White"
