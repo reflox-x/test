@@ -1,15 +1,34 @@
 using pawledger.Services;
+using pawledger.models;
+using pawledger.Services;
 
 namespace pawledger.pages;
 
 public partial class AddRecordPage : ContentPage
 {
     private bool _isExpense = true;
+    private readonly DatabaseService? _databaseService;
+
+    private void ApplyLanguage()
+    {
+        PageTitleLabel.Text = LanguageService.GetText("AddRecord");
+        ExpenseButton.Text = LanguageService.GetText("Expense");
+        IncomeButton.Text = LanguageService.GetText("Income");
+        CategoryEntry.Placeholder = LanguageService.GetText("CategoryPlaceholder");
+        SelectDateLabel.Text = LanguageService.GetText("SelectDate");
+        SaveRecordButton.Text = LanguageService.GetText("SaveRecord");
+    }
 
     public AddRecordPage()
     {
         InitializeComponent();
         UpdateModeUI();
+
+        _databaseService = Application.Current?
+            .Handler?
+            .MauiContext?
+            .Services
+            .GetService<DatabaseService>();
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
@@ -63,7 +82,22 @@ public partial class AddRecordPage : ContentPage
 
         string type = _isExpense ? "Expense" : "Income";
 
+        // keep内存逻辑
         LedgerService.AddRecord(amount, type, category);
+
+        // 写入 SQLite
+        if (_databaseService != null)
+        {
+            await _databaseService.AddRecordAsync(new RecordDb
+            {
+                Amount = amount,
+                Type = type,
+                Category = category,
+                CreatedAt = RecordDatePicker.Date ?? DateTime.Now
+            });
+        }
+
+        HapticService.Vibrate(80);
 
         await DisplayAlertAsync("Saved", "Record saved successfully.", "OK");
         await Shell.Current.GoToAsync("..");

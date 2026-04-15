@@ -10,6 +10,7 @@
         <VerticalStackLayout Padding="20" Spacing="20">
 
             <Label
+                x:Name="PlanTitleLabel"
                 Text="Plan"
                 FontSize="28"
                 FontAttributes="Bold"
@@ -49,6 +50,7 @@
                 Padding="16">
                 <VerticalStackLayout Spacing="12">
                     <Label
+                        x:Name="MyPlansTitleLabel"
                         Text="My Plans"
                         FontSize="22"
                         FontAttributes="Bold"
@@ -85,6 +87,7 @@
                         FontSize="16"
                         TextColor="#4A90A4" />
 
+
                                         <ProgressBar
                         Progress="{Binding Progress}"
                         ProgressColor="#4FA9CC"
@@ -98,11 +101,19 @@
                         Clicked="OnAddSavingsClicked" />
 
                                         <Button
+                        Text="Edit Plan"
+                        BackgroundColor="#FCE8B6"
+                        TextColor="#8A6A00"
+                        CornerRadius="14"
+                        Clicked="OnEditPlanClicked" />
+
+                                        <Button
                         Text="Delete Plan"
                         BackgroundColor="#FBE2DF"
                         TextColor="#B85C5C"
                         CornerRadius="14"
                         Clicked="OnDeletePlanClicked" />
+
 
                                     </VerticalStackLayout>
                                 </Border>
@@ -113,6 +124,7 @@
             </Border>
 
             <Button
+                x:Name="AddToPlanButton"
                 Text="+ Add to plan"
                 HeightRequest="54"
                 CornerRadius="18"

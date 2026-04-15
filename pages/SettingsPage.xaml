@@ -10,6 +10,7 @@
         <VerticalStackLayout Padding="20" Spacing="20">
 
             <Label
+                x:Name="SettingsTitleLabel"
                 Text="Settings"
                 FontSize="28"
                 FontAttributes="Bold"
@@ -22,6 +23,7 @@
                 Padding="16">
                 <VerticalStackLayout Spacing="8">
                     <Label
+                        x:Name="LanguageTitleLabel"
                         Text="Language"
                         FontSize="18"
                         FontAttributes="Bold"
@@ -45,6 +47,7 @@
                 Padding="16">
                 <VerticalStackLayout Spacing="8">
                     <Label
+                        x:Name="CurrencyTitleLabel"
                         Text="Currency"
                         FontSize="18"
                         FontAttributes="Bold"
@@ -69,6 +72,7 @@
                 Padding="16">
                 <Grid ColumnDefinitions="*,Auto">
                     <Label
+                        x:Name="DarkModeTitleLabel"
                         Text="Dark Mode"
                         FontSize="18"
                         FontAttributes="Bold"

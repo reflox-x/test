@@ -1,3 +1,5 @@
+using pawledger.Services;
+
 namespace pawledger.pages;
 
 public partial class SettingsPage : ContentPage
@@ -6,6 +8,15 @@ public partial class SettingsPage : ContentPage
     {
         InitializeComponent();
         LoadSettings();
+        ApplyLanguage();
+    }
+
+    private void ApplyLanguage()
+    {
+        SettingsTitleLabel.Text = LanguageService.GetText("Settings");
+        LanguageTitleLabel.Text = LanguageService.GetText("Language");
+        CurrencyTitleLabel.Text = LanguageService.GetText("Currency");
+        DarkModeTitleLabel.Text = LanguageService.GetText("DarkMode");
     }
 
     private void LoadSettings()
@@ -34,6 +45,8 @@ public partial class SettingsPage : ContentPage
 
         string selectedLanguage = LanguagePicker.SelectedItem.ToString() ?? "English";
         Preferences.Default.Set("language", selectedLanguage);
+
+        ApplyLanguage();
 
         await DisplayAlertAsync("Saved", $"Language set to {selectedLanguage}.", "OK");
     }

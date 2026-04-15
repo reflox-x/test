@@ -9,16 +9,15 @@
     <ScrollView>
         <VerticalStackLayout Padding="20,18,20,30" Spacing="18">
 
-            <!-- Header -->
-            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
-                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,Auto">
+                <HorizontalStackLayout Spacing="8">
                     <Label Text="🐾" FontSize="26" />
                     <Label
+                        x:Name="AppTitleLabel"
                         Text="PawLedger"
                         FontSize="28"
                         FontAttributes="Bold"
-                        TextColor="#355070"
-                        VerticalOptions="Center" />
+                        TextColor="#355070" />
                 </HorizontalStackLayout>
 
                 <Button
@@ -33,206 +32,247 @@
                     Clicked="OnAddRecordClicked" />
             </Grid>
 
-            <!-- Month Card -->
+            <Border
+                StrokeShape="RoundRectangle 22"
+                Padding="0"
+                BackgroundColor="Transparent">
+                <Image
+                    x:Name="ThemeBannerImage"
+                    Source="fox_day.png"
+                    Aspect="AspectFill"
+                    HeightRequest="180" />
+            </Border>
+
             <Border
                 StrokeShape="RoundRectangle 22"
                 BackgroundColor="White"
                 Padding="18,16">
                 <Grid ColumnDefinitions="*,Auto">
-                    <Label
+                    <Button
+                        x:Name="MonthTitleButton"
                         Text="April 2026"
                         FontSize="20"
                         FontAttributes="Bold"
-                        TextColor="#355070" />
+                        TextColor="#355070"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Start"
+                        Clicked="OnChangeDateClicked" />
+
                     <Label
                         Grid.Column="1"
                         Text="›"
                         FontSize="24"
-                        TextColor="#90A4B8" />
+                        TextColor="#90A4B8"
+                        VerticalOptions="Center" />
                 </Grid>
             </Border>
 
-            <!-- Income -->
+            <DatePicker
+                x:Name="HomeDatePicker"
+                Format="yyyy/MM/dd"
+                DateSelected="OnHomeDateSelected" />
+
             <Border
                 StrokeShape="RoundRectangle 22"
                 BackgroundColor="#DDF3EE"
                 Padding="18,14">
-                <Grid ColumnDefinitions="*,Auto">
-                    <VerticalStackLayout Spacing="4">
-                        <Label
-                            Text="Income"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            TextColor="#4A90A4" />
-                        <Label
-                            x:Name="IncomeLabel"
-                            Text="¥5,000"
-                            FontSize="26"
-                            FontAttributes="Bold"
-                            TextColor="#355070" />
-                    </VerticalStackLayout>
-
+                <VerticalStackLayout Spacing="4">
                     <Label
-                        Grid.Column="1"
-                        Text="🪙"
-                        FontSize="40"
-                        VerticalOptions="Center" />
-                </Grid>
+                        x:Name="IncomeTitleLabel"
+                        Text="Income"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="#4A90A4" />
+                    <Label
+                        x:Name="IncomeLabel"
+                        Text="¥0"
+                        FontSize="26"
+                        FontAttributes="Bold"
+                        TextColor="#355070" />
+                </VerticalStackLayout>
             </Border>
 
-            <!-- Expense -->
             <Border
                 StrokeShape="RoundRectangle 22"
                 BackgroundColor="#FBE2DF"
                 Padding="18,14">
-                <Grid ColumnDefinitions="*,Auto">
-                    <VerticalStackLayout Spacing="4">
-                        <Label
-                            Text="Expense"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            TextColor="#D97C7C" />
-                        <Label
-                            x:Name="ExpenseLabel"
-                            Text="¥2,258"
-                            FontSize="26"
-                            FontAttributes="Bold"
-                            TextColor="#B85C5C" />
-                    </VerticalStackLayout>
-
+                <VerticalStackLayout Spacing="4">
                     <Label
-                        Grid.Column="1"
-                        Text="👛"
-                        FontSize="40"
-                        VerticalOptions="Center" />
-                </Grid>
+                        x:Name="ExpenseTitleLabel"
+                        Text="Expense"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="#D97C7C" />
+                    <Label
+                        x:Name="ExpenseLabel"
+                        Text="¥0"
+                        FontSize="26"
+                        FontAttributes="Bold"
+                        TextColor="#B85C5C" />
+                </VerticalStackLayout>
             </Border>
 
-            <!-- Balance -->
             <Border
                 StrokeShape="RoundRectangle 24"
                 BackgroundColor="White"
                 Padding="18">
                 <VerticalStackLayout Spacing="14">
-
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Balance  " FontSize="18" FontAttributes="Bold" TextColor="#E0A83C" />
-                                <Span x:Name="BalanceLabel" Text="¥2,742" FontSize="18" FontAttributes="Bold" TextColor="#E0A83C" />
+                                <Span
+                                    x:Name="BalanceTitleSpan"
+                                    Text="Balance  "
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    TextColor="#E0A83C" />
+                                <Span
+                                    x:Name="BalanceLabel"
+                                    Text="¥0"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    TextColor="#E0A83C" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
 
-                    <!-- Simple chart placeholder -->
-                    <Grid HeightRequest="120" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*,*,*">
-                        <BoxView Grid.Row="1" Grid.ColumnSpan="6" HeightRequest="1" BackgroundColor="#EAEAEA" VerticalOptions="Center" />
-                        <BoxView Grid.Row="2" Grid.ColumnSpan="6" HeightRequest="1" BackgroundColor="#EAEAEA" VerticalOptions="Center" />
-                        <BoxView Grid.Row="3" Grid.ColumnSpan="6" HeightRequest="1" BackgroundColor="#EAEAEA" VerticalOptions="Center" />
-
-                        <Label Grid.Row="3" Grid.Column="0" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="2" Grid.Column="1" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="3" Grid.Column="2" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="2" Grid.Column="3" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="2" Grid.Column="4" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="1" Grid.Column="5" Text="●" TextColor="#F48C7F" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-
-                        <Label Grid.Row="3" Grid.Column="0" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" />
-                        <Label Grid.Row="3" Grid.Column="1" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" />
-                        <Label Grid.Row="3" Grid.Column="2" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" />
-                        <Label Grid.Row="2" Grid.Column="3" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="2" Grid.Column="4" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                        <Label Grid.Row="0" Grid.Column="5" Text="●" TextColor="#F0C84B" FontSize="14" HorizontalOptions="Center" VerticalOptions="End" />
-                    </Grid>
+                    <GraphicsView
+                        x:Name="BalanceChartView"
+                        HeightRequest="140" />
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Summary -->
             <Border
                 StrokeShape="RoundRectangle 22"
                 BackgroundColor="White"
                 Padding="16">
                 <VerticalStackLayout Spacing="12">
                     <Label
+                        x:Name="SummaryTitleLabel"
                         Text="Summary"
                         FontSize="22"
                         FontAttributes="Bold"
                         TextColor="#355070" />
 
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                        <Border
-                            WidthRequest="38"
-                            HeightRequest="38"
-                            BackgroundColor="#DDF3EE"
-                            StrokeShape="RoundRectangle 10">
-                            <Label Text="💳" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
-                        </Border>
+                    <Grid ColumnDefinitions="*,Auto">
                         <Label
-                            Grid.Column="1"
+                            x:Name="TotalTitleLabel"
                             Text="Total"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="#234"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            x:Name="TotalLabel"
-                            Text="¥5,000"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="#2A7B74"
-                            VerticalOptions="Center" />
-                    </Grid>
-
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                        <Border
-                            WidthRequest="38"
-                            HeightRequest="38"
-                            BackgroundColor="#FCE8B6"
-                            StrokeShape="RoundRectangle 10">
-                            <Label Text="🍴" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
-                        </Border>
+                            TextColor="#234" />
                         <Label
                             Grid.Column="1"
+                            x:Name="TotalLabel"
+                            Text="¥0"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#2A7B74" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label
+                            x:Name="FoodTitleLabel"
                             Text="Food"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="#234"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            x:Name="FoodLabel"
-                            Text="¥55"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="#C96A59"
-                            VerticalOptions="Center" />
-                    </Grid>
-
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                        <Border
-                            WidthRequest="38"
-                            HeightRequest="38"
-                            BackgroundColor="#DDE8F8"
-                            StrokeShape="RoundRectangle 10">
-                            <Label Text="🐶" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
-                        </Border>
+                            TextColor="#234" />
                         <Label
                             Grid.Column="1"
+                            x:Name="FoodLabel"
+                            Text="¥0"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="#C96A59" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label
+                            x:Name="PetTitleLabel"
                             Text="Pet"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="#234"
-                            VerticalOptions="Center" />
+                            TextColor="#234" />
                         <Label
-                            Grid.Column="2"
+                            Grid.Column="1"
                             x:Name="PetLabel"
-                            Text="¥30"
+                            Text="¥0"
                             FontSize="18"
                             FontAttributes="Bold"
-                            TextColor="#6B6FAF"
-                            VerticalOptions="Center" />
+                            TextColor="#6B6FAF" />
                     </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                StrokeShape="RoundRectangle 22"
+                BackgroundColor="White"
+                Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        x:Name="RecentRecordsTitleLabel"
+                        Text="Recent Records"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        TextColor="#355070" />
+
+                    <CollectionView
+                        x:Name="RecentRecordsCollectionView"
+                        SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    StrokeShape="RoundRectangle 16"
+                                    BackgroundColor="#F9FAFB"
+                                    Padding="12"
+                                    Margin="0,0,0,10">
+                                    <Grid
+                                        ColumnDefinitions="*,Auto"
+                                        RowDefinitions="Auto,Auto,Auto"
+                                        RowSpacing="4">
+
+                                        <Label
+                                            Text="{Binding Category}"
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            TextColor="#243B53" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding AmountText}"
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            TextColor="{Binding AmountColor}"
+                                            HorizontalOptions="End" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Text="{Binding Type}"
+                                            FontSize="14"
+                                            TextColor="#90A4B8" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding DateText}"
+                                            FontSize="14"
+                                            TextColor="#90A4B8"
+                                            HorizontalOptions="End" />
+
+                                        <Button
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="2"
+                                            Text="Delete"
+                                            BackgroundColor="#FBE2DF"
+                                            TextColor="#B85C5C"
+                                            CornerRadius="12"
+                                            Margin="0,6,0,0"
+                                            Clicked="OnDeleteRecordClicked" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </VerticalStackLayout>
             </Border>
 
