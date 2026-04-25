@@ -17,7 +17,7 @@ public class HomeChartDrawable : IDrawable
         float leftPadding = 45;
         float rightPadding = 10;
         float topPadding = 10;
-        float bottomPadding = 28;   // 留空间给刻度
+        float bottomPadding = 28;   // Leave space for the scale
 
         float chartWidth = width - leftPadding - rightPadding;
         float chartHeight = height - topPadding - bottomPadding;
@@ -38,7 +38,7 @@ public class HomeChartDrawable : IDrawable
         canvas.FontColor = Colors.Gray;
         canvas.FontSize = 11;
 
-        // 左侧金额刻度 横线
+        // Left side amount scale horizontal line
         for (int i = 0; i <= 3; i++)
         {
             float ratio = i / 3f;
@@ -59,7 +59,7 @@ public class HomeChartDrawable : IDrawable
                 VerticalAlignment.Center);
         }
 
-        // 底部日期刻度
+        // Bottom date scale
         DrawBottomAxis(canvas, leftPadding, topPadding, chartWidth, chartHeight);
 
         DrawLineSeries(canvas, IncomePoints, leftPadding, topPadding, chartWidth, chartHeight, maxValue, Color.FromArgb("#F0C84B"));
@@ -73,7 +73,7 @@ public class HomeChartDrawable : IDrawable
 
         float baseY = topPadding + chartHeight + 4;
 
-        // 5个刻度
+        // Five scales
         List<int> tickDays = new() { 1 };
 
         if (DaysInMonth >= 8) tickDays.Add(8);
@@ -92,12 +92,12 @@ public class HomeChartDrawable : IDrawable
             else
                 x = leftPadding + ((day - 1f) / (DaysInMonth - 1f)) * chartWidth;
 
-            // 小刻度线
+            // Small scale line
             canvas.StrokeColor = Colors.Gray;
             canvas.StrokeSize = 1;
             canvas.DrawLine(x, topPadding + chartHeight, x, topPadding + chartHeight + 4);
 
-            // 日期文字
+            // Date text
             canvas.DrawString(
                 day.ToString(),
                 x - 12,

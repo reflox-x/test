@@ -82,10 +82,10 @@ public partial class AddRecordPage : ContentPage
 
         string type = _isExpense ? "Expense" : "Income";
 
-        // keep内存逻辑
+        // Maintain memory logic
         LedgerService.AddRecord(amount, type, category);
 
-        // 写入 SQLite
+        // Write to SQLite
         if (_databaseService != null)
         {
             await _databaseService.AddRecordAsync(new RecordDb
